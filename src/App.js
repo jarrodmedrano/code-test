@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Editor from "./components/Editor";
 import "semantic-ui-css/semantic.min.css";
-import { Container } from "semantic-ui-react";
-import { Grid, Image } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 
 class App extends Component {
   render() {

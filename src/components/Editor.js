@@ -4,30 +4,25 @@ import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
 import "codemirror/mode/javascript/javascript";
 import "codemirror/mode/jsx/jsx";
+import * as actions from "../redux/actions";
+import { connect } from "react-redux";
 
 class Editor extends Component {
-  state = {
-    code: "//I ♥ react-codemirror2\n"
-  };
-
-  updateCode(newCode) {
-    this.setState({
-      code: newCode
-    });
+  onCodeChange(code) {
+    this.props.updateCode(code);
   }
 
   render() {
     return (
       <CodeMirror
-        autoFocus={true}
-        value={this.state.code}
+        value={this.props.code}
         options={{
           mode: "javascript",
           theme: "material",
           lineNumbers: true
         }}
         onBeforeChange={(editor, data, value) => {
-          this.updateCode({ value });
+          this.onCodeChange({ value });
         }}
         onChange={(editor, data, value) => {}}
       />
@@ -35,4 +30,8 @@ class Editor extends Component {
   }
 }
 
-export default Editor;
+function mapStateToProps({ code }) {
+  return { code };
+}
+
+export default connect(mapStateToProps, actions)(Editor);
