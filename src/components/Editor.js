@@ -7,21 +7,29 @@ import "codemirror/mode/jsx/jsx";
 
 class Editor extends Component {
   state = {
-    value: "I ♥ react-codemirror2"
+    code: "//I ♥ react-codemirror2\n"
   };
+
+  updateCode(newCode) {
+    this.setState({
+      code: newCode
+    });
+  }
 
   render() {
     return (
       <CodeMirror
-        value={this.state.value}
+        autoFocus={true}
+        value={this.state.code}
         options={{
           mode: "javascript",
           theme: "material",
           lineNumbers: true
         }}
-        onChange={(editor, data, value) => {
-          this.setState({ value });
+        onBeforeChange={(editor, data, value) => {
+          this.updateCode({ value });
         }}
+        onChange={(editor, data, value) => {}}
       />
     );
   }

@@ -8,7 +8,7 @@ import { Grid, Image } from "semantic-ui-react";
 class App extends Component {
   render() {
     return (
-      <Grid>
+      <Grid columns={2}>
         <Grid.Column>
           <Editor />
         </Grid.Column>
